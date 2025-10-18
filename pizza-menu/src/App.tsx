@@ -1,6 +1,8 @@
+import "./index.css";
+
 function App() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <Menu />
       <Footer />
@@ -9,18 +11,22 @@ function App() {
 }
 
 function Header() {
-  return <h1>MG Pizza Co.</h1>;
+  return (
+    <header className="header">
+      <h1>MG Pizza Co.</h1>
+    </header>
+  );
 }
 
 function Menu() {
   return (
-    <div>
+    <main className="menu">
       <h2>Our Menu</h2>
       <Pizza />
       <Pizza />
       <Pizza />
       <Pizza />
-    </div>
+    </main>
   );
 }
 
@@ -34,11 +40,11 @@ function Footer() {
       ? "We're currently open!"
       : "Sorry, we're closed";
 
-  return <footer>{restaurantStatus}</footer>;
+  return <footer className="footer">{restaurantStatus}</footer>;
 }
 
 function Pizza() {
-  return <h2>Pizza</h2>;
+  return <h3>Pizza</h3>;
 }
 
 export default App;
