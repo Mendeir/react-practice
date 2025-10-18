@@ -25,9 +25,16 @@ function Menu() {
 }
 
 function Footer() {
-  return (
-    <footer>{new Date().toLocaleTimeString()}. We're currently open!</footer>
-  );
+  const hour = new Date().getHours();
+  const openHour = 12;
+  const closeHour = 22;
+
+  const restaurantStatus =
+    hour >= openHour && hour <= closeHour
+      ? "We're currently open!"
+      : "Sorry, we're closed";
+
+  return <footer>{restaurantStatus}</footer>;
 }
 
 function Pizza() {
