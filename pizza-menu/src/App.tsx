@@ -22,11 +22,31 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-      <Pizza />
+      <Pizza
+        name="Pizza Spinaci"
+        ingredient="Tomato, mozarella, spinach, and ricotta cheese"
+        photoName="pizzas/spinaci.jpg"
+        price={10}
+      />
     </main>
+  );
+}
+
+type PizzaProps = {
+  name: string;
+  ingredient: string;
+  photoName: string;
+  price: number;
+};
+
+function Pizza(props: PizzaProps) {
+  return (
+    <div>
+      <img src={props.photoName} alt={props.name} />
+      <h3>{props.name}</h3>
+      <p>{props.ingredient}</p>
+      <span>{props.price}</span>
+    </div>
   );
 }
 
@@ -41,10 +61,6 @@ function Footer() {
       : "Sorry, we're closed";
 
   return <footer className="footer">{restaurantStatus}</footer>;
-}
-
-function Pizza() {
-  return <h3>Pizza</h3>;
 }
 
 export default App;
