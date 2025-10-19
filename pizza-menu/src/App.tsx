@@ -1,4 +1,5 @@
 import "./index.css";
+import { pizzaData, type Pizza } from "./data.tsx";
 
 function App() {
   return (
@@ -22,30 +23,27 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-      <Pizza
-        name="Pizza Spinaci"
-        ingredient="Tomato, mozarella, spinach, and ricotta cheese"
-        photoName="pizzas/spinaci.jpg"
-        price={10}
-      />
+
+      <ul className="pizzas">
+        {pizzaData.map((pizza) => (
+          <Pizza pizzaObj={pizza} key={pizza.name} />
+        ))}
+      </ul>
     </main>
   );
 }
 
 type PizzaProps = {
-  name: string;
-  ingredient: string;
-  photoName: string;
-  price: number;
+  pizzaObj: Pizza;
 };
 
 function Pizza(props: PizzaProps) {
   return (
-    <div>
-      <img src={props.photoName} alt={props.name} />
-      <h3>{props.name}</h3>
-      <p>{props.ingredient}</p>
-      <span>{props.price}</span>
+    <div className="pizza">
+      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <h3>{props.pizzaObj.name}</h3>
+      <p>{props.pizzaObj.ingredients}</p>
+      <span>{props.pizzaObj.price}</span>
     </div>
   );
 }
