@@ -55,13 +55,25 @@ function Footer() {
   const hour = new Date().getHours();
   const openHour = 12;
   const closeHour = 22;
+  const isOpen = hour >= openHour && hour < closeHour;
 
-  const restaurantStatus =
-    hour >= openHour && hour <= closeHour
-      ? "We're currently open!"
-      : "Sorry, we're closed";
-
-  return <footer className="footer">{restaurantStatus}</footer>;
+  return (
+    <footer className="footer">
+      {isOpen ? (
+        <div className="order">
+          <p>
+            We're open until {closeHour}:00. Comie visit us or order online!
+            Time is {hour}
+          </p>
+          <button className="btn">Order</button>
+        </div>
+      ) : (
+        <p>
+          We're happy to welcome you between {openHour}:00 and {closeHour}:00.
+        </p>
+      )}
+    </footer>
+  );
 }
 
 export default App;
